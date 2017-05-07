@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#host{
+			/*color: red;
+			font-size: 25px;
+			font-weight: bold;*/
+		}
+		.root{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<template id="template">
+		<style>
+			p{
+				color: red;
+			}
+		</style>
+		<div id="container">
+			<p>I am template</p>
+			<content select="h1"></content>
+		</div>
+	</template>
+
+	<div id="host">
+		<h1>This is Shadow DOM!</h1>
+	</div>
+
+	<script>
+		var host = document.querySelector('#host');
+		var root = host.createShadowRoot();
+
+		var template = document.querySelector('#template');
+		var clone = document.importNode(template.content, true);
+
+		root.appendChild(clone);
+	</script>
+</body>
+</html>

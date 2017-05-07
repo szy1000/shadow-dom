@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		video{
+			width: 300px;
+			height: auto;
+			background: red;
+		}
+		#host{
+			/*color: red;
+			font-size: 25px;
+			font-weight: bold;*/
+		}
+		.root{
+			color: blue;
+		}
+		#host::content h1{
+			display: block;
+			width: 200px;
+			height: 200px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<video src="1.mp4" controls></video>
+	<hr>
+	<div id="host">
+		<h1>This is Shadow DOM!</h1>
+		<h2>h2 tag</h2>
+	</div>
+
+	<script>
+		var host = document.querySelector('#host');
+		var root = host.createShadowRoot();
+		var content = document.createElement('content');
+		var content2 = document.createElement('content');
+		content.setAttribute('select','h1');
+		content2.setAttribute('select','h2');
+		root.appendChild(content);
+		root.appendChild(content2);
+	</script>
+
+
+
+</body>
+</html>

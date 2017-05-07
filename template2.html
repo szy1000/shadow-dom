@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#host{
+			/*color: red;
+			font-size: 25px;
+			font-weight: bold;*/
+		}
+		.root{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<template id="temp">
+		<div>
+			<div class="content">The greed of content</div>
+			<div>
+				<content select=""></content>
+			<div>
+		</div>
+	</template>
+
+	<div id="main">
+		<h1 class="title">I am title</h1>
+		<p class="subtitle">I am subtitle</p>
+	</div>
+
+
+	<script>
+		var main = document.querySelector('#main');
+		var root = main.createShadowRoot();
+
+		var temp = document.querySelector('#temp');
+		var clone = document.importNode(temp.content, true);
+
+		root.appendChild(clone);
+	</script>
+</body>
+</html>

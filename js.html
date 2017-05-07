@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#main::shadow .content{
+				color: pink;
+		}
+		
+		/*#main::shadow h1{  
+				color: yellow;
+		}
+		只能穿透一层*/
+
+		/*#main /deep/ p{
+			font-weight: bold;
+			color: blue;
+		}*/
+	</style>
+</head>
+<body>
+	<div id="main">
+		<input type="text" value="html">
+		<h1 class="title">I am title</h1>
+		<p class="subtitle">I am subtitle</p>
+	</div>
+
+	<template id="temp">
+		<style>
+			:host{
+				border: 2px solid #ccc;
+				transition:  200ms;
+			}
+			:host(:hover){
+				padding: 20px;
+			}   
+			::content h1{
+				background: red;
+			}
+
+			::content p{
+				background: green;
+			}
+		</style>
+		<p class="first">first</p>
+		<div class="content">The greed of content</div>
+		<input type="text" value="template">
+		<content select=""></content>
+	</template>
+
+	<script>
+		var main = document.querySelector('#main');
+		var root = main.createShadowRoot();
+
+		var temp = document.querySelector('#temp');
+		var clone = document.importNode(temp.content, true);
+
+		root.appendChild(clone);
+
+		document.addEventListener('onfocus', function(e){
+			// console.log(e.target);
+		})
+		var ipt = document.getElementsByTagName('input');
+		for(var i=0; i<ipt.length; i++){
+			ipt[i].onfocus = function(e){
+				console.log(e.target);
+			}
+		}
+	</script>
+</body>
+</html>
