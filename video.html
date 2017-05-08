@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		video{
+			width: 300px;
+			height: auto;
+			/*background: red;*/
+		}
+		video::-webkit-media-controls-enclosure{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<video controls>
+		<source src="1.mp4">
+	</video>
+	<div id="host">
+		 <p>I am host</p>
+	</div>
+	<script>
+		// 判断是否支持
+		if(document.body.createShadowRoot){
+			var host = document.querySelector('#host');
+			var root = host.createShadowRoot();
+			
+			var content = document.createElement('content');
+			content.setAttribute('select','p');
+			host.appendChild(content);
+
+			var temp = document.createElement('div');
+			temp.textContent = 'This is a Shadow DOM';
+			root.appendChild(temp);
+		}
+		var json = {
+			person1: {
+				"id": 1,
+				"name": "Tom",
+				"city": "London"
+			},
+			person2: {
+				"id": 2,
+				"name": "John",
+				"city": "NewYork"
+			},
+			person3: {
+				"id": 3,
+				"name": "Alice",
+				"city": "Paris"
+			},
+
+			person:[
+				{
+					id: 1,
+					name: "Tom",
+					city: "London"
+				},
+				{
+					id: 2,
+					name: "John",
+					city: "NewYork"
+				},
+				{
+					id: 3,
+					name: "Alice",
+					city: "Paris"
+				}
+			]
+		}
+
+		console.log(json.person.length);
+	</script>
+</body>
+</html>
