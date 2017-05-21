@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img::shadow img#alttext-container{
+			background: blue!important;
+		}
+		img::content img#alttext-container{
+			display: none!important;
+		}
+		img::content img#alttext-container{
+			background: red!important
+		}
+		img /deep/ #alttext-container{
+			border: 1px solid red!important;
+		}
+		img /deep/ div{
+			border: 1px solid red!important;
+		}
+		input::shadow#inner-editor{
+			padding: 20px!important;;
+			border:1px solid red;
+		}
+		input{
+		}
+		input::-webkit-input-placeholder{
+			color: red;
+			font-size: 20px;
+		}
+		.font{
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>	
+	<div class="font">我是word test</div>
+
+	<input type="text" placeholder="text">
+
+	<hr>
+	<img width="400" height="400" src="test.png" alt="test.png">
+</body>
+</html>
